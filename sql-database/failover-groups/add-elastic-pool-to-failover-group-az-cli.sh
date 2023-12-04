@@ -49,7 +49,7 @@ az sql elastic-pool create --name $pool --resource-group $resourceGroup --server
 # </CreateElasticPoolOnSecondary>
 # <CreateFailoverGroup>
 echo "Creating $failoverGroup between $server and $secondaryServer..."
-az sql failover-group create --name $failoverGroup --partner-server $secondaryServer --resource-group $resourceGroup --server $server --failover-policy Automatic --grace-period 2
+az sql failover-group create --name $failoverGroup --partner-server $secondaryServer --resource-group $resourceGroup --server $server --failover-policy Manual
 databaseId=$(az sql elastic-pool list-dbs --name $pool --resource-group $resourceGroup --server $server --query [0].name -o json | tr -d '"')
 # </CreateFailoverGroup>
 # <AddDatabaseToFailoverGroup>
